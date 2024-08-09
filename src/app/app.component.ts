@@ -7,9 +7,29 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   constructor(private httpClient: HttpClient) {}
+  deploymentMarker: number = 1;
   title = 'cookie-test-frontend';
   message: string = 'Click on above buttons to test';
   url = 'https://cookie-test-backend-qaba.onrender.com';
+
+  checkConnection() {
+    try {
+      this.message = 'Loading';
+      this.httpClient
+        .get(this.url + '/api', { withCredentials: true })
+        .subscribe({
+          next: (response: any) => {
+            this.message = response.message;
+          },
+          error: (error: any) => {
+            this.message = 'Error';
+            console.error(error.error);
+          },
+        });
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   setCookie() {
     try {
@@ -52,23 +72,6 @@ export class AppComponent {
     try {
       this.message = 'Loading';
       this.httpClient.get(this.url + '/clear-cookie').subscribe({
-        next: (response: any) => {
-          this.message = response.message;
-        },
-        error: (error: any) => {
-          this.message = 'Error';
-          console.error(error.error);
-        },
-      });
-    } catch (error) {
-      console.error(error);
-    }
-  }
-
-  checkConnection() {
-    try {
-      this.message = 'Loading';
-      this.httpClient.get(this.url + '/api').subscribe({
         next: (response: any) => {
           this.message = response.message;
         },
