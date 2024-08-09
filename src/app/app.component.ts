@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   constructor(private httpClient: HttpClient) {}
-  deploymentMarker: number = 2;
+  deploymentMarker: number = 3;
   title = 'cookie-test-frontend';
   message: string = 'Click on above buttons to test';
   url = 'https://cookie-test-backend-qaba.onrender.com';
