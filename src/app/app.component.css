@@ -1,0 +1,14 @@
+.functions {
+  display: flex;
+}
+
+button {
+  margin-right: 1%;
+}
+
+.box {
+  border: 1px black solid;
+  min-height: 10px;
+  padding: 1%;
+  max-width: fit-content;
+}
